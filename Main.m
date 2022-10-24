@@ -47,15 +47,13 @@ phase0=rand(D,D);
 phase0(phase0<0)=0;
 phase0=0;
 OTF=exp(2*pi*1i*phase0);
-NNP=60;
+NNP=40;
 N=7;
 rois=zeros(D,D,N);
 fims=zeros(D,D,N);
 phase_s=zeros(D,D,N);
 mfim=zeros(D,D,N);
 objn=zeros(D,D,N);
-w1=zeros(D,D);
-w2=zeros(D,D);
 for n=1:N
         a=floor(N1/4)+randi(50);
         b=floor(N2/4)+randi(50);
@@ -85,7 +83,7 @@ for k=1:10
        OTF=exp(1i*phase2);
        %%% TV constrain 
        OO=abs(fftshift(ifft2(fims(:,:,n)./OTF)));  
-       OO=(1-bets)*OO+bets*TVm_pdhg(w1,w2,OO,lbd,5);
+       OO=(1-bets)*OO+bets*TVC(OO,lbd,5);
         OO(OO<0.7)=0;
         %osnr=snr(OO(:));
         %disp(osnr);
