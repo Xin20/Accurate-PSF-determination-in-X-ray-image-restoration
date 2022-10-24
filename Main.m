@@ -98,7 +98,7 @@ for k=1:10
     end
 end
 %%
-nameb='20220719/chip3.tif';
+nameb='20220719/sample.tif';
 name0='TV/';
 im2=im2double(imread(nameb));
 [x0,y0]=size(im2);
